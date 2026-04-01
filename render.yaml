@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: dumbterm
+    runtime: docker
+    plan: free
+    autoDeploy: true
+
+    envVars:
+      - key: DUMBTERM_PIN
+        value: 12345
+      - key: SITE_TITLE
+        value: mariushosting
+      - key: ENABLE_STARSHIP
+        value: true
+      - key: LOCKOUT_TIME
+        value: 15
+      - key: MAX_SESSION_AGE
+        value: 24
+
+    healthCheckPath: /
+
+    disk:
+      name: dumbterm-data
+      mountPath: /root/data
+      sizeGB: 1
+disk:
+  name: dumbterm-data
+  mountPath: /root
+  sizeGB: 1
